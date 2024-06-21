@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
+  m_Name: 3- Picture Note
+  m_EditorClassIdentifier: 
+  noteID: 3
+  noteName: Picture Note
+  noteIcon: {fileID: 21300000, guid: d93f70bf9c6bc8b4d88e320fd881deef, type: 3}
+  addToInventory: 1
+  pageImages:
+  - {fileID: 21300000, guid: 038d370f19a4d994185d8cc02f2b78e5, type: 3}
+  pageScale: {x: 900, y: 900}
+  showTextOnMainPage: 0
+  showNavigationButtons: 0
+  pageText:
+  - Null
+  mainTextAreaScale: {x: 0, y: 0}
+  mainTextSize: 0
+  mainFontType: {fileID: 0}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 0}
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
+  overlayBGColor: {r: 0, g: 0, b: 0, a: 0}
+  overlayTextAreaScale: {x: 0, y: 0}
+  overlayTextBGScale: {x: 0, y: 0}
+  overlayTextSize: 0
+  overlayFontType: {fileID: 0}
+  overlayFontStyle: 0
+  overlayFontColor: {r: 0, g: 0, b: 0, a: 0}
+  allowAudioPlayback: 0
+  showPlaybackButtons: 0
+  playOnOpen: 0
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
+  isNoteTrigger: 0
