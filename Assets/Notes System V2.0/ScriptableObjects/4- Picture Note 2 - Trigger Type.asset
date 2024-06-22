@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: 4- Picture Note 2 - Trigger Type
   m_EditorClassIdentifier: 
   noteID: 4
-  noteName: Fountain Picture
-  noteIcon: {fileID: 21300000, guid: d93f70bf9c6bc8b4d88e320fd881deef, type: 3}
-  isReadable: 1
+  noteName: "\u5730\u5716"
+  noteIcon: {fileID: 21300000, guid: ca3d55cd9cbe9644eb74b79b5daa4f30, type: 3}
   addToInventory: 1
   pageImages:
-  - {fileID: 21300000, guid: 2b35fa63f2c005443811b9cd553ef016, type: 3}
+  - {fileID: 21300000, guid: ca3d55cd9cbe9644eb74b79b5daa4f30, type: 3}
+  - {fileID: 21300000, guid: 03840ac7d15f2f14881be85c8b0a344f, type: 3}
   pageScale: {x: 900, y: 900}
   showTextOnMainPage: 0
-  showNavigationButtons: 0
+  showNavigationButtons: 1
   pageText:
-  - Null
+  - "\u4E00\u6A13\u5730\u5716"
+  - "\u4E8C\u6A13\u5730\u5716"
   mainTextAreaScale: {x: 0, y: 0}
   mainTextSize: 0
   mainFontType: {fileID: 0}
@@ -31,7 +32,7 @@ MonoBehaviour:
   mainFontColor: {r: 0, g: 0, b: 0, a: 0}
   enableOverlayText: 0
   showOverlayOnOpen: 0
-  overlayBGColor: {r: 0, g: 0, b: 0, a: 0}
+  overlayBGColor: {r: 1, g: 1, b: 1, a: 0}
   overlayTextAreaScale: {x: 0, y: 0}
   overlayTextBGScale: {x: 0, y: 0}
   overlayTextSize: 0
@@ -42,5 +43,5 @@ MonoBehaviour:
   showPlaybackButtons: 0
   playOnOpen: 0
   noteReadAudio: {fileID: 0}
-  notePageAudio: {fileID: 11400000, guid: db2251db6638c1e478571aabc4317d5b, type: 2}
+  notePageAudio: {fileID: 0}
   isNoteTrigger: 1
