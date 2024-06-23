@@ -945,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342395503250314, guid: 6bd6752157d086646a4dd11ecbe3905c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.59
+      value: 18.827
       objectReference: {fileID: 0}
     - target: {fileID: 4342395503250314, guid: 6bd6752157d086646a4dd11ecbe3905c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22034,8 +22034,8 @@ MonoBehaviour:
     m_Bits: 128
   patrolSpeed: 1.5
   chaseSpeed: 3.5
-  chaseAudioClip: {fileID: 8300000, guid: 9f8a1e6741a342647b9c0055e1e0a7b8, type: 3}
-  caughtAudioClip: {fileID: 8300000, guid: 27b98a8c68f991b408c5c6afff25358c, type: 3}
+  chaseAudioClip: {fileID: 8300000, guid: d0dd5a8e1fcf88c4c990c0c54c58a2ea, type: 3}
+  caughtAudioClip: {fileID: 8300000, guid: 1225b0f997026d64fa600c3fd93f1a74, type: 3}
   patrolPoints:
   - {fileID: 331537619}
   - {fileID: 1422732798}
@@ -22047,10 +22047,8 @@ MonoBehaviour:
   chaseDuration: 10
   youDiedUI: {fileID: 1939989942}
   monsterFaceImage: {fileID: 491909191}
-  shakeDuration: 1
-  shakeMagnitude: 1
-  firstHitText: {fileID: 50232441}
-  firstHitTextDuration: 2
+  shakeDuration: 0.5
+  shakeMagnitude: 0.1
 --- !u!54 &627230762
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26422,7 +26420,7 @@ Transform:
   m_GameObject: {fileID: 753733952}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 2.1476889, z: -1.01}
+  m_LocalPosition: {x: -0.193, y: 2.1476889, z: -0.991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

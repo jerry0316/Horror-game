@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using StarterAssets;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -38,20 +37,11 @@ public class EnemyAIPatrol : MonoBehaviour
     // "You Died" UI
     public GameObject youDiedUI;
 
-    // 怪物臉圖像
+    // 怪物脸图像
     public GameObject monsterFaceImage;
-    public float shakeDuration = 0.5f; // 震動時間
-    public float shakeMagnitude = 0.1f; // 震動幅度
+    public float shakeDuration = 0.5f; // 震动时间
+    public float shakeMagnitude = 0.1f; // 震动幅度
     private ScreenShake screenShake;
-
-    // 主角被攻擊次數
-    private int playerHitCount = 0;
-    private const int MaxPlayerHits = 2; // 最大攻擊次數
-
-    // 第一次攻擊提示
-    public TextMeshProUGUI firstHitText; // 使用 TextMeshProUGUI 元件
-    private bool hasShownFirstHitText = false;
-    public float firstHitTextDuration = 2f; // 提示顯示時間
 
     void Start()
     {
@@ -61,7 +51,6 @@ public class EnemyAIPatrol : MonoBehaviour
         boxCollider = GetComponentInChildren<BoxCollider>();
         boxCollider.isTrigger = true;
         youDiedUI.SetActive(false);
-        firstHitText.enabled = false; // 默認隱藏提示文字
 
         if (patrolPoints.Length == 0)
         {
@@ -80,33 +69,15 @@ public class EnemyAIPatrol : MonoBehaviour
         chaseAudioSource.volume = 0.03f; // 設置音量
         chaseAudioSource.loop = true; // 重複播放追擊音效
 
-        // 初始化屏幕震動
+        // 初始化屏幕震动
         screenShake = Camera.main.GetComponent<ScreenShake>();
         if (screenShake == null)
         {
             screenShake = Camera.main.gameObject.AddComponent<ScreenShake>();
         }
 
-        // 初始化怪物臉圖像
+        // 初始化怪物脸图像
         monsterFaceImage.SetActive(false);
-
-        // 檢查所有關鍵變量是否正確設置
-        if (player == null)
-        {
-            Debug.LogError("Player not found!");
-        }
-        if (bgmAudioSource == null)
-        {
-            Debug.LogError("BackgroundMusic AudioSource not found!");
-        }
-        if (chaseAudioSource == null)
-        {
-            Debug.LogError("Chase AudioSource not found!");
-        }
-        if (firstHitText == null)
-        {
-            Debug.LogError("FirstHitText not found!");
-        }
     }
 
     void Update()
@@ -199,21 +170,10 @@ public class EnemyAIPatrol : MonoBehaviour
         var playerController = other.GetComponent<FirstPersonController>();
         if (playerController != null)
         {
-            playerHitCount++;
-            Debug.Log("Hit! Player hit count: " + playerHitCount);
-
-            if (playerHitCount == 1 && !hasShownFirstHitText)
-            {
-                StartCoroutine(ShowFirstHitText());
-            }
-
-            if (playerHitCount >= MaxPlayerHits)
-            {
-                Debug.Log("Player has been hit maximum times!");
-                StopAllSounds(); // 停止所有音樂
-                ShowYouDiedScreen();
-                StartCoroutine(HandlePlayerCaught());
-            }
+            Debug.Log("Hit!");
+            StopAllSounds(); // 停止所有音樂
+            ShowYouDiedScreen();
+            StartCoroutine(HandlePlayerCaught());
         }
 
         if (other.CompareTag("Key"))
@@ -224,14 +184,6 @@ public class EnemyAIPatrol : MonoBehaviour
         }
     }
 
-    IEnumerator ShowFirstHitText()
-    {
-        hasShownFirstHitText = true;
-        firstHitText.enabled = true;
-        yield return new WaitForSeconds(firstHitTextDuration);
-        firstHitText.enabled = false;
-    }
-
     IEnumerator HandlePlayerCaught()
     {
         // 停止追擊音效
@@ -240,16 +192,16 @@ public class EnemyAIPatrol : MonoBehaviour
             chaseAudioSource.Stop();
         }
 
-        // 顯示怪物臉圖像
+        // 显示怪物脸图像
         monsterFaceImage.SetActive(true);
 
         // 播放被抓住的音效
         AudioSource.PlayClipAtPoint(caughtAudioClip, transform.position);
 
-        // 進行屏幕震動
+        // 进行屏幕震动
         yield return StartCoroutine(screenShake.Shake(shakeDuration, shakeMagnitude));
 
-        // 隱藏怪物臉圖像
+        // 隐藏怪物脸图像
         monsterFaceImage.SetActive(false);
     }
 
