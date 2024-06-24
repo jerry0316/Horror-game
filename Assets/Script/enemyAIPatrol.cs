@@ -1,34 +1,35 @@
 ﻿using System.Collections;
-using StarterAssets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using StarterAssets;
 
 public class EnemyAIPatrol : MonoBehaviour
 {
     GameObject player;
     NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
-    [SerializeField] float patrolSpeed = 1.0f; // 巡邏速度
-    [SerializeField] float chaseSpeed = 3.5f; // 追擊速度
-    [SerializeField] AudioClip chaseAudioClip; // 追擊音效
+    [SerializeField] float patrolSpeed = 1.0f; // 巡逻速度
+    [SerializeField] float chaseSpeed = 3.5f; // 追击速度
+    [SerializeField] AudioClip chaseAudioClip; // 追击音效
     [SerializeField] AudioClip caughtAudioClip; // 被抓住的音效
     Animator animator;
     BoxCollider boxCollider;
 
-    // 巡邏點
+    // 巡逻点
     public Transform[] patrolPoints;
     int currentPatrolIndex = 0;
 
-    // 狀態變更
+    // 状态变更
     [SerializeField] float sightRange, attackRange;
     bool playerInSight, playerInAttackRange;
 
-    // 是否玩家拿到鑰匙
+    // 是否玩家拿到钥匙
     bool playerHasKey = false;
 
-    // 追擊計時器
+    // 追击计时器
     float chaseTimer;
-    public float chaseDuration = 10f; // 追擊時間（秒）
+    public float chaseDuration = 10f; // 追击时间（秒）
 
     // 音效
     private AudioSource bgmAudioSource;
@@ -39,9 +40,18 @@ public class EnemyAIPatrol : MonoBehaviour
 
     // 怪物脸图像
     public GameObject monsterFaceImage;
-    public float shakeDuration = 0.5f; // 震动时间
-    public float shakeMagnitude = 0.1f; // 震动幅度
-    private ScreenShake screenShake;
+
+    // 主角被攻击次数
+    private int playerHitCount = 5;
+    private const int MaxPlayerHits = 5; // 最大攻击次数
+
+    // 血量显示
+    public HealthDisplay healthDisplay;
+
+    // 第一次攻击提示
+    public TextMeshProUGUI firstHitText; // 使用 TextMeshProUGUI 组件
+    private bool hasShownFirstHitText = false;
+    public float firstHitTextDuration = 2f; // 提示显示时间
 
     void Start()
     {
@@ -51,6 +61,7 @@ public class EnemyAIPatrol : MonoBehaviour
         boxCollider = GetComponentInChildren<BoxCollider>();
         boxCollider.isTrigger = true;
         youDiedUI.SetActive(false);
+        firstHitText.enabled = false; // 默认隐藏提示文字
 
         if (patrolPoints.Length == 0)
         {
@@ -61,23 +72,38 @@ public class EnemyAIPatrol : MonoBehaviour
 
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);
 
-        // 初始化音效來源
+        // 初始化音效来源
         bgmAudioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
         chaseAudioSource = gameObject.AddComponent<AudioSource>();
-        // 設置 chaseAudioSource 的 clip
+        // 设置 chaseAudioSource 的 clip
         chaseAudioSource.clip = chaseAudioClip;
-        chaseAudioSource.volume = 0.03f; // 設置音量
-        chaseAudioSource.loop = true; // 重複播放追擊音效
+        chaseAudioSource.volume = 0.03f; // 设置音量
+        chaseAudioSource.loop = true; // 重复播放追击音效
 
-        // 初始化屏幕震动
-        screenShake = Camera.main.GetComponent<ScreenShake>();
-        if (screenShake == null)
+        // 检查所有关键变量是否正确设置
+        if (player == null)
         {
-            screenShake = Camera.main.gameObject.AddComponent<ScreenShake>();
+            Debug.LogError("Player not found!");
+        }
+        if (bgmAudioSource == null)
+        {
+            Debug.LogError("BackgroundMusic AudioSource not found!");
+        }
+        if (chaseAudioSource == null)
+        {
+            Debug.LogError("Chase AudioSource not found!");
+        }
+        if (firstHitText == null)
+        {
+            Debug.LogError("FirstHitText not found!");
+        }
+        if (healthDisplay == null)
+        {
+            Debug.LogError("HealthDisplay not found!");
         }
 
-        // 初始化怪物脸图像
-        monsterFaceImage.SetActive(false);
+        // 初始化血量显示
+        healthDisplay.UpdateHealth(playerHitCount, MaxPlayerHits);
     }
 
     void Update()
@@ -105,7 +131,7 @@ public class EnemyAIPatrol : MonoBehaviour
             }
         }
 
-        // 如果正在追擊，則遞增計時器
+        // 如果正在追击，则递增计时器
         if (playerHasKey)
         {
             chaseTimer += Time.deltaTime;
@@ -135,7 +161,7 @@ public class EnemyAIPatrol : MonoBehaviour
         animator.SetBool("isWalking", false);
         animator.SetBool("isRunning", true);
 
-        // 停止背景音樂，播放追擊音效
+        // 停止背景音乐，播放追击音效
         if (!chaseAudioSource.isPlaying)
         {
             bgmAudioSource.Pause();
@@ -153,6 +179,19 @@ public class EnemyAIPatrol : MonoBehaviour
         }
     }
 
+    // 重置攻击
+    public void ResetAfterAttack()
+    {
+        if (playerInSight)
+        {
+            Chase();
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+
     public void EnableAttack()
     {
         boxCollider.enabled = true;
@@ -167,13 +206,26 @@ public class EnemyAIPatrol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // 确保 FirstPersonController 类类型已正确引用
         var playerController = other.GetComponent<FirstPersonController>();
         if (playerController != null)
         {
-            Debug.Log("Hit!");
-            StopAllSounds(); // 停止所有音樂
-            ShowYouDiedScreen();
-            StartCoroutine(HandlePlayerCaught());
+            playerHitCount--;
+            Debug.Log("Hit! Player hit count: " + playerHitCount);
+            healthDisplay.UpdateHealth(playerHitCount, MaxPlayerHits);
+
+            if (playerHitCount == 1 && !hasShownFirstHitText)
+            {
+                StartCoroutine(ShowFirstHitText());
+            }
+
+            if (playerHitCount <= 0)
+            {
+                Debug.Log("Player has been hit maximum times!");
+                StopAllSounds(); // 停止所有音乐
+                ShowYouDiedScreen();
+                StartCoroutine(HandlePlayerCaught());
+            }
         }
 
         if (other.CompareTag("Key"))
@@ -184,9 +236,17 @@ public class EnemyAIPatrol : MonoBehaviour
         }
     }
 
+    IEnumerator ShowFirstHitText()
+    {
+        hasShownFirstHitText = true;
+        firstHitText.enabled = true;
+        yield return new WaitForSeconds(firstHitTextDuration);
+        firstHitText.enabled = false;
+    }
+
     IEnumerator HandlePlayerCaught()
     {
-        // 停止追擊音效
+        // 停止追击音效
         if (chaseAudioSource.isPlaying)
         {
             chaseAudioSource.Stop();
@@ -198,9 +258,8 @@ public class EnemyAIPatrol : MonoBehaviour
         // 播放被抓住的音效
         AudioSource.PlayClipAtPoint(caughtAudioClip, transform.position);
 
-        // 进行屏幕震动
-        yield return StartCoroutine(screenShake.Shake(shakeDuration, shakeMagnitude));
-
+        // 等待 1 秒钟
+        yield return new WaitForSeconds(1f);
         // 隐藏怪物脸图像
         monsterFaceImage.SetActive(false);
     }
@@ -218,19 +277,19 @@ public class EnemyAIPatrol : MonoBehaviour
     {
         playerHasKey = true;
         Chase();
-        agent.speed = chaseSpeed; // 設置追擊速度
-        chaseTimer = 0f; // 重設追擊計時器
+        agent.speed = chaseSpeed; // 设置追击速度
+        chaseTimer = 0f; // 重设追击计时器
     }
 
-    // 停止追擊方法
+    // 停止追击方法
     public void StopChasing()
     {
-        playerHasKey = false; // 停止追擊
-        agent.ResetPath(); // 停止移動
-        animator.SetBool("isWalking", true); // 回到巡邏狀態
-        animator.SetBool("isRunning", false); // 回到巡邏狀態
+        playerHasKey = false; // 停止追击
+        agent.ResetPath(); // 停止移动
+        animator.SetBool("isWalking", true); // 回到巡逻状态
+        animator.SetBool("isRunning", false); // 回到巡逻状态
 
-        // 停止追擊音效，恢復背景音樂
+        // 停止追击音效，恢复背景音乐
         if (chaseAudioSource.isPlaying)
         {
             chaseAudioSource.Stop();
@@ -243,7 +302,7 @@ public class EnemyAIPatrol : MonoBehaviour
 
     private void StopAllSounds()
     {
-        // 停止所有音樂
+        // 停止所有音乐
         Debug.Log("Stopping all sounds.");
         if (bgmAudioSource.isPlaying)
         {
