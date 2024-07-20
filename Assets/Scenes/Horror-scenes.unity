@@ -2222,7 +2222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keypadType: 1
-  _inputLimit: 5
+  _inputLimit: 2
   keypadCodesList:
   - keypadCode: 1234
     keypadEvent:
