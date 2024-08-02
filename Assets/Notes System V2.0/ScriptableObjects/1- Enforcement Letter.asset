@@ -20,16 +20,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 45e5b91714bff6b4183d00c3496db62b, type: 3}
   pageScale: {x: 900, y: 900}
   showTextOnMainPage: 0
-  showNavigationButtons: 1
+  showNavigationButtons: 0
   pageText:
   - "\u4E2D\u6587\u6E2C\u8A66"
-  - "\u4E2D\u6587\u6E2C\u8A662222222222222"
   mainTextAreaScale: {x: 495, y: 795}
   mainTextSize: 25
   mainFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
   mainFontStyle: 0
   mainFontColor: {r: 0, g: 0, b: 0, a: 1}
-  enableOverlayText: 1
+  enableOverlayText: 0
   showOverlayOnOpen: 1
   overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
   overlayTextAreaScale: {x: 1045, y: 550}

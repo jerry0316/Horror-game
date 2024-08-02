@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
+  m_Name: "\u6700\u7D42\u7D19\u689D"
+  m_EditorClassIdentifier: 
+  noteID: 26
+  noteName: "\u6700\u7D42\u7D19\u689D"
+  noteIcon: {fileID: 21300000, guid: f9cbdcde2724b714abb9d5b16ab94bae, type: 3}
+  addToInventory: 1
+  pageImages:
+  - {fileID: 21300000, guid: f9cbdcde2724b714abb9d5b16ab94bae, type: 3}
+  pageScale: {x: 2500, y: 1000}
+  showTextOnMainPage: 0
+  showNavigationButtons: 0
+  pageText:
+  - "\"\u6B61\u8FCE\u4F86\u5230\u5BE6\u9A57\u7684\u6700\u7D42\u968E\u6BB5\u3002\u5982\u679C\u4F60\u80FD\u770B\u5230\u9019\u6BB5\u8A0A\u606F\uFF0C\u8AAA\u660E\u4F60\u5DF2\u7D93\u89E3\u958B\u4E86\u5927\u90E8\u5206\u7684\u8B0E\u984C\uFF0C\u4E5F\u627E\u5230\u4E86\u6211\u5011\u7684\u79D8\u5BC6\u3002\u4F60\u53EF\u80FD\u5DF2\u7D93\u958B\u59CB\u61F7\u7591\u81EA\u5DF1\u7684\u4E00\u5207\u3002\u6211\u5011\u7684\u5BE6\u9A57\u4E26\u4E0D\u50C5\u50C5\u662F\u5C0D\u75C5\u4EBA\u7684\u8A18\u61B6\u9032\u884C\u64CD\u63A7\uFF0C\u6211\u5011\u9084\u5728\u5617\u8A66\u91CD\u5BEB\u5BE6\u9A57\u5C0D\u8C61\u7684\u73FE\u5BE6\uFF0C\u8B93\u4ED6\u5011\u76F8\u4FE1\u81EA\u5DF1\u751F\u6D3B\u5728\u4E00\u500B\u5B8C\u5168\u865B\u69CB\u7684\u4E16\u754C\u4E2D\u3002\u800C\u4F60\uFF0C\u6B63\u662F\u6211\u5011\u6700\u6210\u529F\u7684\u5BE6\u9A57\u5C0D\u8C61\u4E4B\u4E00\u3002\"\r\n\"\u4F60\u662F\u5426\u66FE\u7D93\u61F7\u7591\u904E\uFF0C\u81EA\u5DF1\u6240\u770B\u5230\u7684\u4E00\u5207\u662F\u5426\u771F\u5BE6\uFF1F\u4E8B\u5BE6\u4E0A\uFF0C\u4F60\u73FE\u5728\u6240\u7D93\u6B77\u7684\u4E00\u5207\uFF0C\u90FD\u53EA\u662F\u6211\u5011\u8A2D\u8A08\u7684\u865B\u64EC\u73FE\u5BE6\u4E2D\u7684\u4E00\u90E8\u5206\u3002\u4F60\u7684\u8A18\u61B6\u548C\u611F\u77E5\u90FD\u662F\u88AB\u6211\u5011\u64CD\u63A7\u7684\u7D50\u679C\u3002\u4F60\u6240\u9700\u8981\u505A\u7684\uFF0C\u5C31\u662F\u627E\u5230\u6700\u5F8C\u7684\u51FA\u53E3\uFF0C\u9003\u96E2\u9019\u500B\u865B\u64EC\u7684\u4E16\u754C\u3002\"\r\n\n(\u63D0\u793A:\u9003\u51FA\u865B\u64EC\u4E16\u754C\u7684\u6700\u7D42\u9470\u5319\u5728\u75C5\u623F\r)\n"
+  mainTextAreaScale: {x: 495, y: 795}
+  mainTextSize: 25
+  mainFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 1}
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
+  overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
+  overlayTextAreaScale: {x: 1045, y: 300}
+  overlayTextBGScale: {x: 1160, y: 300}
+  overlayTextSize: 25
+  overlayFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  overlayFontStyle: 0
+  overlayFontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 0
+  showPlaybackButtons: 1
+  playOnOpen: 0
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
+  isNoteTrigger: 0

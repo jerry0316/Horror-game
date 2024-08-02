@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
+  m_Name: "\u5BE6\u9A57\u8A18\u93045"
+  m_EditorClassIdentifier: 
+  noteID: 24
+  noteName: "\u5BE6\u9A57\u8A18\u93045"
+  noteIcon: {fileID: 21300000, guid: 14bbb59d970ca8c4db613977b38c7d49, type: 3}
+  addToInventory: 1
+  pageImages:
+  - {fileID: 21300000, guid: 14bbb59d970ca8c4db613977b38c7d49, type: 3}
+  pageScale: {x: 2500, y: 1300}
+  showTextOnMainPage: 0
+  showNavigationButtons: 0
+  pageText:
+  - "\u5BE6\u9A57\u8A18\u93045       \u65E5\u671F:2023\u5E748\u670828\u65E5\n\u70BA\u4E86\u7BA1\u7406\u5BE6\u9A57\u6578\u64DA\uFF0C\u6211\u5011\u4F7F\u7528\u4E86\u591A\u7A2E\u8CC7\u6599\u5EAB\u7BA1\u7406\u7CFB\u7D71\uFF08DBMS\uFF09\uFF0C\u5305\u62ECMySQL\u3001PostgreSQL\u3001Oracle\u548CSQL
+    Server\u7B49\u3002\u8CC7\u6599\u5EAB\u662F\u4EE5\u7D50\u69CB\u5316\u65B9\u5F0F\u5B58\u5132\u548C\u7D44\u7E54\u6578\u64DA\u7684\u96C6\u5408\u3002\u6211\u5011\u4E3B\u8981\u4F7F\u7528\u95DC\u4FC2\u578B\u8CC7\u6599\u5EAB\uFF0C\u4EE5\u8868\u683C\u5F62\u5F0F\u5B58\u5132\u6578\u64DA\uFF0C\u4E26\u901A\u904E\u95DC\u4FC2\u4F86\u806F\u63A5\u4E0D\u540C\u7684\u8868\u3002SQL\uFF08Structured
+    Query Language\uFF09\u662F\u6211\u5011\u7528\u4F86\u67E5\u8A62\u548C\u64CD\u4F5C\u8CC7\u6599\u5EAB\u6578\u64DA\u7684\u4E3B\u8981\u8A9E\u8A00\u3002\r\n"
+  mainTextAreaScale: {x: 495, y: 795}
+  mainTextSize: 25
+  mainFontType: {fileID: 0}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 1}
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
+  overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
+  overlayTextAreaScale: {x: 1045, y: 300}
+  overlayTextBGScale: {x: 1160, y: 300}
+  overlayTextSize: 25
+  overlayFontType: {fileID: 0}
+  overlayFontStyle: 0
+  overlayFontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 0
+  showPlaybackButtons: 0
+  playOnOpen: 0
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
+  isNoteTrigger: 0

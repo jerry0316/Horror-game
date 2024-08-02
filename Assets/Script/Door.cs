@@ -6,12 +6,12 @@ using TMPro;
 public class Door : MonoBehaviour
 {
     public Animator door;
-    public DialogManager dialogManager; // ¹ï¸Ü®ØºŞ²z¾¹
-    public string requiredKey; // ¦¹ªù©Ò»İªºÆ_°Í
-    public string doorName; // ¦¹ªùªº¦WºÙ¡]¥Î©óÅã¥Ü¤¬°Ê°T®§¡^
-    public AudioSource doorAudio; // ªùªº­µ·½
-    public AudioClip openSound; // ¶}ªù­µ®Ä
-    public AudioClip closeSound; // Ãöªù­µ®Ä
+    public DialogManager dialogManager; // ï¿½ï¿½Ü®ØºŞ²zï¿½ï¿½
+    public string requiredKey; // ï¿½ï¿½ï¿½ï¿½ï¿½Ò»İªï¿½ï¿½_ï¿½ï¿½
+    public string doorName; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ù¡]ï¿½Î©ï¿½ï¿½ï¿½Ü¤ï¿½ï¿½Ê°Tï¿½ï¿½ï¿½^
+    public AudioSource doorAudio; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public AudioClip openSound; // ï¿½}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public AudioClip closeSound; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     private bool inPlayer;
     private bool isOpen;
@@ -27,7 +27,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inPlayer = true;
-            ShowInteractionMessage(); // Åã¥Ü¤¬°Ê°T®§
+            ShowInteractionMessage(); // ï¿½ï¿½Ü¤ï¿½ï¿½Ê°Tï¿½ï¿½
         }
     }
 
@@ -36,7 +36,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inPlayer = false;
-            HideInteractionMessage(); // ÁôÂÃ¤¬°Ê°T®§
+            HideInteractionMessage(); // ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½Ê°Tï¿½ï¿½
         }
     }
 
@@ -46,20 +46,20 @@ public class Door : MonoBehaviour
         {
             if (!isOpen && GameManager.Instance.HasKey(requiredKey))
             {
-                DoorOpens(); // ¶}±Òªù
+                DoorOpens(); // ï¿½}ï¿½Òªï¿½
             }
             else if (!isOpen)
             {
-                ShowNeedKeyMessage(); // Åã¥Ü»İ­nÆ_°Íªº°T®§
+                ShowNeedKeyMessage(); // ï¿½ï¿½Ü»İ­nï¿½_ï¿½Íªï¿½ï¿½Tï¿½ï¿½
             }
             else
             {
-                DoorCloses(); // Ãö³¬ªù
+                DoorCloses(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             }
         }
     }
 
-    // ¶}±Òªù
+    // ï¿½}ï¿½Òªï¿½
     void DoorOpens()
     {
         door.SetBool("open", true);
@@ -72,7 +72,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    // Ãö³¬ªù
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void DoorCloses()
     {
         door.SetBool("open", false);
@@ -85,21 +85,21 @@ public class Door : MonoBehaviour
         }
     }
 
-    // Åã¥Ü¤¬°Ê°T®§
+    // ï¿½ï¿½Ü¤ï¿½ï¿½Ê°Tï¿½ï¿½
     void ShowInteractionMessage()
     {
-        dialogManager.ShowDialog("«ö¤U 'E' ¶}±Ò " + doorName);
+        dialogManager.ShowDialog("æŒ‰ä¸‹Eé–‹å•Ÿ" + doorName);
     }
 
-    // ÁôÂÃ¤¬°Ê°T®§
+    // ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½Ê°Tï¿½ï¿½
     void HideInteractionMessage()
     {
         dialogManager.HideDialog();
     }
 
-    // Åã¥Ü»İ­nÆ_°Íªº°T®§
+    // ï¿½ï¿½Ü»İ­nï¿½_ï¿½Íªï¿½ï¿½Tï¿½ï¿½
     void ShowNeedKeyMessage()
     {
-        dialogManager.ShowDialog("Âê¦í¤F¡A»İ­n " + requiredKey + " ¶}±Ò");
+        dialogManager.ShowDialog("éœ€è¦" + requiredKey + "é–‹å•Ÿ");
     }
 }

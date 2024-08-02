@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
+  m_Name: "\u5BE6\u9A57\u8A18\u93041"
+  m_EditorClassIdentifier: 
+  noteID: 20
+  noteName: "\u5BE6\u9A57\u8A18\u93041"
+  noteIcon: {fileID: 21300000, guid: ed6a601b8ec924248aeed7f272959eb0, type: 3}
+  addToInventory: 1
+  pageImages:
+  - {fileID: 21300000, guid: ed6a601b8ec924248aeed7f272959eb0, type: 3}
+  pageScale: {x: 2500, y: 1300}
+  showTextOnMainPage: 0
+  showNavigationButtons: 0
+  pageText:
+  - "\u5BE6\u9A57\u8A18\u93041\r\n\u65E5\u671F\uFF1A2023\u5E748\u670812\u65E5\r\n\u9019\u88E1\u7684\u60C5\u6CC1\u8D8A\u4F86\u8D8A\u7CDF\u7CD5\uFF0C\u75C5\u4EBA\u5011\u7684\u60C5\u7DD2\u8B8A\u5F97\u6975\u4E0D\u7A69\u5B9A\uFF0C\u4F3C\u4E4E\u6BCF\u500B\u4EBA\u7684\u8A18\u61B6\u90FD\u5728\u9010\u6F38\u5D29\u89E3\u3002\u4ED6\u5011\u4E0D\u518D\u8A18\u5F97\u81EA\u5DF1\u7684\u8EAB\u4EFD\uFF0C\u958B\u59CB\u76F8\u4FE1\u4E00\u4E9B\u865B\u69CB\u7684\u4E8B\u5BE6\u3002\u6211\u5011\u767C\u73FE\u6578\u64DA\u5B58\u5132\u548C\u50B3\u8F38\u5B58\u5728\u554F\u984C\uFF0C\u8A18\u61B6\u51FA\u73FE\u932F\u4E82\uFF0C\u751A\u81F3\u6709\u75C5\u4EBA\u5728\u63A5\u53D7\u8A18\u61B6\u91CD\u5BEB\u5F8C\u5931\u53BB\u4E86\u77E5\u89BA\u3002\u70BA\u4E86\u4FEE\u6B63\u932F\u8AA4\uFF0C\u6211\u5728\u8CC7\u6599\u767C\u73FE\u6578\u64DA\u5B58\u5132\u7684\u57FA\u672C\u55AE\u4F4D\u662F\u4F4Dbit\uFF0C8\u500B\u4F4D\u7D44\u6210\u4E00\u500B(byte)\u3002\u5B58\u5132\u5BB9\u91CF\u5E38\u7528\u7684\u55AE\u4F4D\u5305\u62ECKB\u3001MB\u3001GB\u7B49\u30021
+    KB\u7B49\u65BC1024 byte\uFF0C\u800C\u4E0D\u662F1000 byte\u3002\u9019\u662F\u56E0\u70BA\u8A08\u7B97\u6A5F\u4F7F\u7528\u4E8C\u9032\u5236\u7CFB\u7D71\uFF0C1024\u662F2\u768410\u6B21\u65B9\u3002\u5728\u4E8C\u9032\u5236\u7CFB\u7D71\u4E2D\uFF0C\u6578\u5B57\u50C5\u75310\u548C1\u7D44\u6210\uFF0C\u4F8B\u5982\u4E8C\u9032\u5236\u7684111\u7B49\u65BC\u5341\u9032\u5236\u76847\u3002\r\n"
+  mainTextAreaScale: {x: 495, y: 795}
+  mainTextSize: 25
+  mainFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 1}
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
+  overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
+  overlayTextAreaScale: {x: 1045, y: 300}
+  overlayTextBGScale: {x: 1160, y: 300}
+  overlayTextSize: 25
+  overlayFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  overlayFontStyle: 0
+  overlayFontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 0
+  showPlaybackButtons: 1
+  playOnOpen: 0
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
+  isNoteTrigger: 0

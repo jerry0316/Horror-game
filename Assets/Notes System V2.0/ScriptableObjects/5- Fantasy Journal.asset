@@ -15,7 +15,6 @@ MonoBehaviour:
   noteID: 5
   noteName: Fantasy Journal
   noteIcon: {fileID: 21300000, guid: 038d370f19a4d994185d8cc02f2b78e5, type: 3}
-  isReadable: 1
   addToInventory: 1
   pageImages:
   - {fileID: 21300000, guid: 585b558d288b3444395caecef8a81043, type: 3}
@@ -45,6 +44,6 @@ MonoBehaviour:
   allowAudioPlayback: 0
   showPlaybackButtons: 1
   playOnOpen: 0
-  noteReadAudio: {fileID: 11400000, guid: 532e117076dbbab468c13db0d795e0a6, type: 2}
-  notePageAudio: {fileID: 11400000, guid: db2251db6638c1e478571aabc4317d5b, type: 2}
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
   isNoteTrigger: 0

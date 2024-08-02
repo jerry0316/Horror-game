@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 827c65a5e20ae8f4881ef1dc150cb163, type: 3}
   pageScale: {x: 900, y: 900}
   showTextOnMainPage: 0
-  showNavigationButtons: 1
+  showNavigationButtons: 0
   pageText:
   - Test
   mainTextAreaScale: {x: 495, y: 795}
@@ -42,5 +42,5 @@ MonoBehaviour:
   showPlaybackButtons: 0
   playOnOpen: 0
   noteReadAudio: {fileID: 0}
-  notePageAudio: {fileID: 11400000, guid: db2251db6638c1e478571aabc4317d5b, type: 2}
+  notePageAudio: {fileID: 0}
   isNoteTrigger: 0

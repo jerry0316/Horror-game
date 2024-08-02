@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
+  m_Name: "\u5BE6\u9A57\u8A18\u93043"
+  m_EditorClassIdentifier: 
+  noteID: 22
+  noteName: "\u5BE6\u9A57\u8A18\u93043"
+  noteIcon: {fileID: 21300000, guid: 393aa4203f3537a479cd2a3972c69e00, type: 3}
+  addToInventory: 1
+  pageImages:
+  - {fileID: 21300000, guid: 393aa4203f3537a479cd2a3972c69e00, type: 3}
+  pageScale: {x: 2500, y: 1300}
+  showTextOnMainPage: 0
+  showNavigationButtons: 0
+  pageText:
+  - "\u5BE6\u9A57\u8A18\u93043\r\n\u65E5\u671F\uFF1A2023\u5E748\u670825\u65E5\r\n\u6211\u5011\u6B63\u5728\u6E2C\u8A66\u4E0D\u540C\u7684\u7A0B\u5F0F\u8A9E\u8A00\u548C\u63A7\u5236\u7D50\u69CB\uFF0C\u4EE5\u627E\u5230\u6700\u4F73\u7684\u8A18\u61B6\u64CD\u63A7\u65B9\u6CD5\u3002\u8B8A\u6578\u548C\u5FAA\u74B0\u662F\u95DC\u9375\uFF0C\u4F46\u6700\u7D42\u90FD\u5931\u6557\u4E86\u3002\u6211\u5011\u5FC5\u9808\u627E\u5230\u4E00\u500B\u66F4\u7A69\u5B9A\u7684\u89E3\u6C7A\u65B9\u6848\u3002\u641C\u5C0B\u76F8\u95DC\u8CC7\u6599\u5F8C\u767C\u73FEPython\u7684\u57FA\u672C\u6578\u64DA\u985E\u578B\u5305\u62ECint\u3001float\u3001bool\u548Cstr\uFF0C\u4F46\u6C92\u6709char\u985E\u578B\u3002\u800C\u63A7\u5236\u7D50\u69CB\u7528\u65BC\u63A7\u5236\u7A0B\u5F0F\u7684\u57F7\u884C\u6D41\u7A0B\uFF0C\u5305\u62EC\u689D\u4EF6\u8A9E\u53E5(\u5982if-else)\u548C\u5FAA\u74B0\u8A9E\u53E5\u3002\u5927\u591A\u6578\u7A0B\u5F0F\u8A9E\u8A00\u4E2D\uFF0Cwhile\u548Cfor\u5FAA\u74B0\u5728\u689D\u4EF6\u70BA\u5047\u6642\u53EF\u80FD\u4E00\u6B21\u90FD\u4E0D\u57F7\u884C\uFF0C\u800Cdo-while\u5FAA\u74B0\u5247\u81F3\u5C11\u6703\u57F7\u884C\u4E00\u6B21\u5FAA\u74B0\u9AD4\u3002\r\n"
+  mainTextAreaScale: {x: 495, y: 795}
+  mainTextSize: 25
+  mainFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  mainFontStyle: 0
+  mainFontColor: {r: 0, g: 0, b: 0, a: 1}
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
+  overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
+  overlayTextAreaScale: {x: 1045, y: 300}
+  overlayTextBGScale: {x: 1160, y: 300}
+  overlayTextSize: 25
+  overlayFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
+  overlayFontStyle: 0
+  overlayFontColor: {r: 0, g: 0, b: 0, a: 1}
+  allowAudioPlayback: 0
+  showPlaybackButtons: 1
+  playOnOpen: 0
+  noteReadAudio: {fileID: 0}
+  notePageAudio: {fileID: 0}
+  isNoteTrigger: 0

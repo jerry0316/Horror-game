@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI dialogText; // ¥Î©óÅã¥Ü¹ï¸Üªº UI ¤å¥»¤¸¯À
+    public TMPro.TextMeshProUGUI dialogText; // ï¿½Î©ï¿½ï¿½ï¿½Ü¹ï¿½Üªï¿½ UI ï¿½å¥»ï¿½ï¿½ï¿½ï¿½
 
-    // Åã¥Ü¹ï¸Ü®Ø¡A¨Ã³]¸m¬ÛÀ³ªº¤å¥»
+    // ï¿½ï¿½Ü¹ï¿½Ü®Ø¡Aï¿½Ã³]ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¥»
     public void ShowDialog(string text)
     {
         dialogText.text = text;
         dialogText.gameObject.SetActive(true);
     }
 
-    // ÁôÂÃ¹ï¸Ü®Ø
+    // ï¿½ï¿½ï¿½Ã¹ï¿½Ü®ï¿½
     public void HideDialog()
     {
         dialogText.gameObject.SetActive(false);
