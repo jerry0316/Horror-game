@@ -18,7 +18,7 @@ MonoBehaviour:
   addToInventory: 1
   pageImages:
   - {fileID: 21300000, guid: 14bbb59d970ca8c4db613977b38c7d49, type: 3}
-  pageScale: {x: 2500, y: 1300}
+  pageScale: {x: 2000, y: 1000}
   showTextOnMainPage: 0
   showNavigationButtons: 0
   pageText:

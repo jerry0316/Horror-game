@@ -12,28 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb5a3fdb08bf584383ace6784368d93, type: 3}
   m_Name: "\u6559\u5B78\u7D19\u689D"
   m_EditorClassIdentifier: 
-  noteID: 3
+  noteID: 32
   noteName: "\u6559\u5B78\u7D19\u689D"
-  noteIcon: {fileID: 21300000, guid: e87ed72bc9e17874eb74d180dc8ef2ff, type: 3}
+  noteIcon: {fileID: 21300000, guid: 3904e2d440c3ce44ab98e94be91d65bb, type: 3}
   addToInventory: 1
   pageImages:
-  - {fileID: 21300000, guid: 45e5b91714bff6b4183d00c3496db62b, type: 3}
-  pageScale: {x: 900, y: 900}
+  - {fileID: 21300000, guid: 3904e2d440c3ce44ab98e94be91d65bb, type: 3}
+  pageScale: {x: 2000, y: 1000}
   showTextOnMainPage: 0
-  showNavigationButtons: 1
+  showNavigationButtons: 0
   pageText:
-  - "\u6559\u5B78"
-  - "\u6559\u5B782"
+  - 
   mainTextAreaScale: {x: 495, y: 795}
   mainTextSize: 25
   mainFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
   mainFontStyle: 0
   mainFontColor: {r: 0, g: 0, b: 0, a: 1}
-  enableOverlayText: 1
-  showOverlayOnOpen: 1
+  enableOverlayText: 0
+  showOverlayOnOpen: 0
   overlayBGColor: {r: 1, g: 1, b: 1, a: 1}
-  overlayTextAreaScale: {x: 1045, y: 550}
-  overlayTextBGScale: {x: 1160, y: 550}
+  overlayTextAreaScale: {x: 1045, y: 300}
+  overlayTextBGScale: {x: 1160, y: 300}
   overlayTextSize: 25
   overlayFontType: {fileID: 12800000, guid: 1940cced16ff1d44a8894ce25c5d87dc, type: 3}
   overlayFontStyle: 0

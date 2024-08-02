@@ -19,7 +19,7 @@ MonoBehaviour:
   pageImages:
   - {fileID: 21300000, guid: ca3d55cd9cbe9644eb74b79b5daa4f30, type: 3}
   - {fileID: 21300000, guid: 03840ac7d15f2f14881be85c8b0a344f, type: 3}
-  pageScale: {x: 900, y: 900}
+  pageScale: {x: 2000, y: 1000}
   showTextOnMainPage: 0
   showNavigationButtons: 1
   pageText:
