@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 public class EnemyAIPatrol : MonoBehaviour
 {
@@ -53,6 +54,9 @@ public class EnemyAIPatrol : MonoBehaviour
     private bool hasShownFirstHitText = false;
     public float firstHitTextDuration = 2f; // 提示显示时间
 
+    // Game Over UI
+    public GameObject gameOverText;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -62,6 +66,7 @@ public class EnemyAIPatrol : MonoBehaviour
         boxCollider.isTrigger = true;
         youDiedUI.SetActive(false);
         firstHitText.enabled = false; // 默认隐藏提示文字
+        gameOverText.SetActive(false); // 隐藏 Game Over 文本
 
         if (patrolPoints.Length == 0)
         {
@@ -139,6 +144,12 @@ public class EnemyAIPatrol : MonoBehaviour
             {
                 StopChasing();
             }
+        }
+
+        // 检查按键事件
+        if (gameOverText.activeSelf && Input.GetKeyDown(KeyCode.Q))
+        {
+            ExitGame();
         }
     }
 
@@ -271,6 +282,15 @@ public class EnemyAIPatrol : MonoBehaviour
 
         // 停止所有音效
         StopAllSounds();
+        
+        // 顯示 "GAME OVER" 畫面
+        ShowGameOverScreen();
+    }
+
+    void ShowGameOverScreen()
+    {
+        gameOverText.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void StartChasing()
@@ -315,5 +335,11 @@ public class EnemyAIPatrol : MonoBehaviour
             Debug.Log("Stopping chase music.");
             chaseAudioSource.Stop();
         }
+    }
+
+    void ExitGame()
+    {
+        // 加載主菜單場景
+        SceneManager.LoadScene("Menu");
     }
 }
