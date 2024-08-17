@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;  // 確保引用UI命名空間
+using UnityEngine.UI;
 
 public class FinalDoor : MonoBehaviour
 {
@@ -13,9 +13,13 @@ public class FinalDoor : MonoBehaviour
     {
         // 確保影片不會在遊戲開始時自動播放
         videoPlayer.Stop();  // 停止影片以防自動播放
+        Debug.Log("Start() 初始化：影片已停止播放");
 
         // 確保提示文本在開始時隱藏
-        doorHintText.enabled = false;
+        if (doorHintText != null)
+        {
+            doorHintText.enabled = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,8 +27,11 @@ public class FinalDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;  // 玩家進入範圍
-            doorHintText.enabled = true;  // 顯示提示文本
-            Debug.Log("Player entered range, displaying hint.");
+            if (doorHintText != null)
+            {
+                doorHintText.enabled = true;  // 顯示提示文本
+            }
+            Debug.Log("玩家進入範圍，顯示提示。");
         }
     }
 
@@ -33,16 +40,27 @@ public class FinalDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;  // 玩家離開範圍
-            doorHintText.enabled = false;  // 隱藏提示文本
+            if (doorHintText != null)
+            {
+                doorHintText.enabled = false;  // 隱藏提示文本
+            }
+            Debug.Log("玩家離開範圍，隱藏提示。");
         }
     }
 
     void Update()
     {
+        // 每次更新檢查 hasKey 的狀態
+        Debug.Log(" hasKey is: " + hasKey);
+
         // 檢查玩家是否在範圍內且按下E鍵
         if (isPlayerInRange && hasKey && Input.GetKeyDown(KeyCode.E))
         {
             PlayEndingVideo();
+        }
+        else if (isPlayerInRange && !hasKey && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("你需要一把鑰匙來打開門。");
         }
     }
 

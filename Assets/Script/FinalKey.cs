@@ -19,6 +19,7 @@ public class FinalKey : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;  // 玩家離開範圍
+            Debug.Log("玩家離開撿取範圍");
         }
     }
 
@@ -38,6 +39,13 @@ public class FinalKey : MonoBehaviour
 
         // 鑰匙消失
         Destroy(gameObject);
-        Debug.Log("你已獲得鑰匙！");
+        Debug.Log("你已獲得鑰匙！ hasKey is now: " + finalDoor.hasKey);
+
+        // 通知怪物開始追擊
+        EnemyAIPatrol[] enemies = FindObjectsOfType<EnemyAIPatrol>();
+        foreach (EnemyAIPatrol enemy in enemies)
+        {
+            enemy.StartChasing();
+        }
     }
 }
