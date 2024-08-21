@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;
+using TMPro;
 
 public class FinalDoor : MonoBehaviour
 {
     public VideoPlayer videoPlayer;  // 這裡引用VideoPlayer物件
     public bool hasKey = false;  // 用於檢查玩家是否擁有鑰匙
     private bool isPlayerInRange = false;  // 檢查玩家是否在範圍內
-    public Text doorHintText;  // 引用提示文本的Text元件
+    public TextMeshProUGUI doorHintText;  // 引用提示文本的TextMeshProUGUI元件
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class FinalDoor : MonoBehaviour
             isPlayerInRange = true;  // 玩家進入範圍
             if (doorHintText != null)
             {
+                doorHintText.text = "按下E逃離咒院";  // 顯示逃離提示
                 doorHintText.enabled = true;  // 顯示提示文本
             }
             Debug.Log("玩家進入範圍，顯示提示。");
@@ -50,17 +51,21 @@ public class FinalDoor : MonoBehaviour
 
     void Update()
     {
-        // 每次更新檢查 hasKey 的狀態
-        Debug.Log(" hasKey is: " + hasKey);
-
         // 檢查玩家是否在範圍內且按下E鍵
-        if (isPlayerInRange && hasKey && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            PlayEndingVideo();
-        }
-        else if (isPlayerInRange && !hasKey && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("你需要一把鑰匙來打開門。");
+            if (hasKey)
+            {
+                PlayEndingVideo();
+            }
+            else
+            {
+                if (doorHintText != null)
+                {
+                    doorHintText.text = "你需要找到逃離咒院的最終鑰匙!";  // 顯示需要鑰匙的提示
+                }
+                Debug.Log("你需要一把鑰匙來打開門。");
+            }
         }
     }
 
@@ -69,5 +74,11 @@ public class FinalDoor : MonoBehaviour
         // 播放結尾影片
         videoPlayer.Play();
         Debug.Log("播放結尾影片");
+
+        // 隱藏提示文本
+        if (doorHintText != null)
+        {
+            doorHintText.enabled = false;
+        }
     }
 }
