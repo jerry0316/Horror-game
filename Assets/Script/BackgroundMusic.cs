@@ -12,7 +12,7 @@ public class BackgroundMusic : MonoBehaviour
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
         audioSource.playOnAwake = true;
-        audioSource.volume = 0.01f;  // 設定音量，值在 0 到 1 之間
+        audioSource.volume = 0.15f;  // 設定音量，值在 0 到 1 之間
         audioSource.Play();
     }
 }
