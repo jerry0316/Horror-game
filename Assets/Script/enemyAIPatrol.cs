@@ -313,10 +313,7 @@ public class EnemyAIPatrol : MonoBehaviour
         if (chaseAudioSource.isPlaying)
         {
             chaseAudioSource.Stop();
-            if (!bgmAudioSource.isPlaying)
-            {
-                bgmAudioSource.Play();
-            }
+            
         }
     }
 
