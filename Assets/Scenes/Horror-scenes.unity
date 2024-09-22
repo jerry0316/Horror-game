@@ -18204,6 +18204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5076978344229387610, guid: 97b0cd269422460b9c5672eb06af8f7c,
         type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076978344229387610, guid: 97b0cd269422460b9c5672eb06af8f7c,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 994192d0dfec4c93a89bb23ae19a756f, type: 2}
@@ -18212,6 +18217,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 482da43e4b4c49659f5071cb8673471d, type: 2}
+    - target: {fileID: 5076978344229387610, guid: 97b0cd269422460b9c5672eb06af8f7c,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076978344229387610, guid: 97b0cd269422460b9c5672eb06af8f7c,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 97b0cd269422460b9c5672eb06af8f7c, type: 3}
     m_RemovedGameObjects: []
