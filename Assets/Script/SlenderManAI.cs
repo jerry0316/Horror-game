@@ -3,55 +3,52 @@ using UnityEngine.AI;
 
 public class SlenderManAI : MonoBehaviour
 {
-    public Transform player; // Reference to the player's GameObject
-    public float teleportDistance = 10f; // Maximum teleportation distance
-    public float teleportCooldown = 5f; // Time between teleportation attempts
-    public float returnCooldown = 10f; // Time before returning to base spot
-    [Range(0f, 1f)] public float chaseProbability = 0.65f; // Probability of chasing the player
-    public float closeRange = 8f; // Range within which the teleport sound plays
-    public AudioClip teleportSound; // Reference to the teleport sound effect
+    public Transform player; // 玩家角色的參考
+    public float teleportDistance = 10f; // 最大瞬移距離
+    public float teleportCooldown = 5f; // 瞬移間隔時間
+    public float returnCooldown = 10f; // 返回基準點的間隔時間
+    [Range(0f, 1f)] public float chaseProbability = 0.65f; // 追逐玩家的機率
+    public float closeRange = 8f; // 靠近範圍內播放瞬移聲音
+    public AudioClip teleportSound; // 瞬移音效
     private AudioSource audioSource;
 
-    public GameObject staticObject; // Reference to the "static" GameObject
-    public float staticActivationRange = 5f; // Range at which "static" should be activated
+    public GameObject staticObject; // 靜電效果的遊戲物件
+    public float staticActivationRange = 5f; // 靜電效果啟動的範圍
 
     private Vector3 baseTeleportSpot;
     private float teleportTimer;
     private bool returningToBase;
+    private bool sanityDeducted = false; // 確保每次靜電效果只扣一次理智值
 
-    private NavMeshAgent agent; // Reference to NavMeshAgent (used for boundaries but not movement)
+    private NavMeshAgent agent; // NavMeshAgent 用於界限
+    private SanityManager sanityManager; // 取得理智管理的參考
 
     private void Start()
     {
         baseTeleportSpot = transform.position;
         teleportTimer = teleportCooldown;
 
-        // Get or add an AudioSource component
+        // 確保 AudioSource 存在
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-
-        // Set the teleport sound
         audioSource.clip = teleportSound;
 
-        // Ensure the "static" object is initially turned off
+        // 確保靜電效果一開始是關閉的
         if (staticObject != null)
         {
             staticObject.SetActive(false);
         }
 
-        // Initialize the NavMeshAgent
         agent = GetComponent<NavMeshAgent>();
+        sanityManager = FindObjectOfType<SanityManager>(); // 找到 SanityManager
     }
 
     private void Update()
     {
-        if (player == null)
-        {
-            return;
-        }
+        if (player == null) return;
 
         teleportTimer -= Time.deltaTime;
 
@@ -59,7 +56,7 @@ public class SlenderManAI : MonoBehaviour
         {
             if (returningToBase)
             {
-                TeleportToBaseSpot(); // Return to base using teleport
+                TeleportToBaseSpot(); // 返回基準點
                 teleportTimer = returnCooldown;
                 returningToBase = false;
             }
@@ -70,15 +67,21 @@ public class SlenderManAI : MonoBehaviour
             }
         }
 
-        FacePlayer(); // Instantly face the player
+        FacePlayer();
 
-        // Check player distance and toggle the "static" object accordingly
+        // 檢查玩家距離並啟動靜電效果
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= staticActivationRange)
         {
             if (staticObject != null && !staticObject.activeSelf)
             {
                 staticObject.SetActive(true);
+                // 扣除理智值
+                if (sanityManager != null && !sanityDeducted)
+                {
+                    sanityManager.DecreaseSanityForStaticEffect(); // 扣除理智值
+                    sanityDeducted = true; // 防止多次扣除
+                }
             }
         }
         else
@@ -86,10 +89,10 @@ public class SlenderManAI : MonoBehaviour
             if (staticObject != null && staticObject.activeSelf)
             {
                 staticObject.SetActive(false);
+                sanityDeducted = false; // 重置扣除判斷
             }
         }
 
-        // Play teleport sound if within the close range
         if (distanceToPlayer <= closeRange)
         {
             PlayTeleportSound();
@@ -98,36 +101,31 @@ public class SlenderManAI : MonoBehaviour
 
     private void DecideTeleportAction()
     {
-        float randomValue = Random.value;
-
-        if (randomValue <= chaseProbability)
+        if (Random.value <= chaseProbability)
         {
-            TeleportNearPlayer(); // Teleport to player's location
+            TeleportNearPlayer();
         }
         else
         {
-            TeleportToBaseSpot(); // Teleport back to the base spot
+            TeleportToBaseSpot();
         }
     }
 
     private void TeleportNearPlayer()
     {
-        // Calculate a random position near the player
         Vector3 randomPosition = player.position + Random.insideUnitSphere * teleportDistance;
-        randomPosition.y = transform.position.y; // Keep the same Y position
+        randomPosition.y = transform.position.y;
 
-        // Ensure the random position is within the NavMesh bounds
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPosition, out hit, teleportDistance, NavMesh.AllAreas))
         {
-            transform.position = hit.position; // Instant teleport to the valid NavMesh position
+            transform.position = hit.position;
         }
         else
         {
-            transform.position = player.position; // Fallback: teleport directly to player
+            transform.position = player.position;
         }
 
-        // Check if sound should play depending on proximity
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= closeRange)
         {
@@ -137,7 +135,6 @@ public class SlenderManAI : MonoBehaviour
 
     private void TeleportToBaseSpot()
     {
-        // Teleport to the initial base spot
         NavMeshHit hit;
         if (NavMesh.SamplePosition(baseTeleportSpot, out hit, 1.0f, NavMesh.AllAreas))
         {
@@ -145,12 +142,11 @@ public class SlenderManAI : MonoBehaviour
         }
         else
         {
-            transform.position = baseTeleportSpot; // Fallback: directly set position
+            transform.position = baseTeleportSpot;
         }
 
         returningToBase = true;
 
-        // Check if sound should play depending on proximity
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= closeRange)
         {
@@ -161,12 +157,12 @@ public class SlenderManAI : MonoBehaviour
     private void FacePlayer()
     {
         Vector3 directionToPlayer = player.position - transform.position;
-        directionToPlayer.y = 0f; // Ignore the vertical component
+        directionToPlayer.y = 0f;
 
         if (directionToPlayer != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-            transform.rotation = targetRotation; // Instantly face the player
+            transform.rotation = targetRotation;
         }
     }
 
@@ -174,7 +170,7 @@ public class SlenderManAI : MonoBehaviour
     {
         if (!audioSource.isPlaying)
         {
-            audioSource.Play(); // Play sound only if it is not already playing
+            audioSource.Play();
         }
     }
 }
